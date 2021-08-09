@@ -1,0 +1,26 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Программа просмотра файлов PKE" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Menu>
+            <MenuItem Header="Файл">
+                <MenuItem Header="Открыть" Click="Открыть_Клик"></MenuItem>
+                <MenuItem Header="Экспорт в XML" Click="Экспорт_Клик"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Выход" Click="Выход_Клик" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Отладка">
+                <MenuItem Header="Вывести список файлов" Click="Список_Клик"></MenuItem>
+                <MenuItem Header="Глобальные переменные" Click="Переменные_Клик"></MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="О программе" Click="О_программе_Клик"></MenuItem>
+        </Menu>
+        <DataGrid x:Name="grid" HorizontalAlignment="Left" Height="377" Margin="10,28,0,0" VerticalAlignment="Center" Width="764" Loaded="Grid_Loaded" MouseUp="grid_MouseUp"/>
+    </Grid>
+</Window>
