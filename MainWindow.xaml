@@ -10,7 +10,7 @@
         <Menu>
             <MenuItem Header="Файл">
                 <MenuItem Header="Открыть" Click="Открыть_Клик"></MenuItem>
-                <MenuItem Header="Экспорт в XML" Click="Экспорт_Клик"></MenuItem>
+                <MenuItem Header="Экспорт в Excel" Click="Экспорт_Клик"></MenuItem>
                 <Separator></Separator>
                 <MenuItem Header="Выход" Click="Выход_Клик" ></MenuItem>
             </MenuItem>
