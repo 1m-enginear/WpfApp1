@@ -14,7 +14,6 @@ namespace WpfApp1
     /// 
     public partial class App : Application
     {
-
         /// <summary>
         /// 
         /// </summary>
@@ -35,27 +34,24 @@ namespace WpfApp1
         public static string[] current_object = { "" };
         public static string[] objects = { "", "" };
         public static List<int> qList = new List<int>();
-        public static double ver = 0.7;
-        //public static int[] qelements = { 0, 0, 0, 0, 0 };
+        public static int[] quan = {0,0};
+        public static string ver = "1.0";
         public string intervalt;
         public long interval;
-        //public int l = 0;
-        //public int schema;
-        public string ed;
-        //==========================
+        public static string current_path;
         public string folderName = "";
         public static string[] findFiles;
-        int quantity;
+        public static int quantity = 0;
         public interface IDialogService
         {
             void ShowMessage(string message);   // показ сообщения
-            //string FilePath { get; set; }   // путь к выбранному файлу
             bool OpenFileDialog();  // открытие файла
             bool SaveFileDialog();  // сохранение файла
         }
         //---------------------------------------------------------Обработка пунктов меню----------------------------------------------------------------------
         private void Открыть_Клик(object sender, RoutedEventArgs e)
         {
+            
             WinForms.FolderBrowserDialog fbd = new WinForms.FolderBrowserDialog();
             fbd.ShowNewFolderButton = false;
             fbd.Description = "Путь к папке /PKE:";
@@ -144,32 +140,8 @@ namespace WpfApp1
                         //Добавление 1970 лет к полученной дате
                         DateTime answer1 = tstop_t.Add(duration);
                         string tstop_s = answer1.ToString("dd MMMM yyyy hh:mm:ss tt");
-                        int l = 0;
-                        try
-                        {
-                            for (int t = 1; t <= objects.Length; t++)
-                            {
-                                if (objects[t] != nameobject)
-                                {
-                                    l += 1;
-                                    // Добавление элемента в коллекцию 
-                                    qList.Add(0);
-                                    // Подсчёт количества файлов с одинаковым именем объекта
-                                    qList[l] += 1;
-                                    objects[t] = nameobject;
-                                    // Добавление результата в таблицу
-                                    result.Add(new MyTable(qList.Count - 1, nameobject, tstart_s, tstop_s, schema, intervalt));
-                                }
-                                else
-                                {
-                                    qList[l] += 1;
-                                }
-                                
-                            }
-                        }
-                        catch
-                        {
-                        }
+                        //---------------------------------------------------- Возвращение к старому виду----------------------------------------------------------------------
+                        result.Add(new MyTable(i+1, nameobject, tstart_s, tstop_s, schema, intervalt));
                     }
                     grid.ItemsSource = result;
                     break;
@@ -207,7 +179,6 @@ namespace WpfApp1
             MenuItem menuItem = (MenuItem)sender;
             MessageBox.Show("Программа просмотра PKE файлов " + "\n" + version + "\nАвтор:" + "\nСеменов Александр Сергеевич", "О программе", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-        //----------------------------------------------------- Тестовые пункты ----------------------------------------------------------------------------
         private void Список_Клик(object sender, RoutedEventArgs e)
         {
             MenuItem menuItem = (MenuItem)sender;
@@ -233,45 +204,34 @@ namespace WpfApp1
         //Получаем данные из таблицы
         private void grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            //Переменная pnumber - номер объекта в массиве путей файлов
-            //Переменная pquantity - количество файлов проверок объекта
-            int pnumber = 0;
-            int pquantity = 0;
             MyTable path = grid.SelectedItem as MyTable;
-            try
+            if (quantity != 0)
             {
-                name = path.Объект;
-                number = path.Номер;
-                int rank = current.Rank;
-                for (int i = 1; i <= number; i++)
-                {
-                    // Подсчёт индекса массива для обращения в массив findFiles[] и заполнения путей файлам текущего объекта
-                    pnumber += qList[i];
-                }
-                pquantity = qList[number];
-                // Если количество элементов не равно 0, заполняется массив current_object
-                if (pnumber !=0)
-                {
-                    int d = pnumber;
-                    //
-                    for (int i = 1; i<= pquantity; i++)
+                try
+                {                
+                    name = path.Объект;
+                    number = path.Номер;
+                    schema = Convert.ToInt32(path.Схема_проверки);
+                    string p = findFiles[number - 1];
+                    string[] pm = p.Split('\\');
+                    foreach (var word in pm)
                     {
-                        current_object[i] = findFiles[d];
-                        Console.WriteLine("Текущий " + findFiles[d]);
-                        d++;
+                        Console.WriteLine(word);
                     }
+                    Console.WriteLine(pm.Length);
+                    int k = pm.Length - 1;
+                    int len = findFiles[number - 1].Length - pm[k].Length; // Узнаём длину последней строки
+                    p = p.Remove(len);
+                    current_path = p;
                 }
-            }
-            catch
-            {
-            }
-            finally
-            {
-                //Условия для открытия окна "Object"
-                if (name!=null)
+                catch
                 {
-                    new Object().ShowDialog();
                 }
+            }
+            //Условия для открытия окна "Object"
+            if (name!=null)
+            {
+                new Object().ShowDialog();
             }
         }
     }
