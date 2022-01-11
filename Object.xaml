@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title= 'Просмотр содержимого' Height="450" Width="850" ResizeMode="NoResize">
+        Title= 'Просмотр содержимого' Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
-        <DataGrid x:Name="grid" HorizontalAlignment="Left" Height="377" Margin="10,28,0,0" VerticalAlignment="Center" Width="815" Loaded="grid_Loaded" MouseUp="grid_MouseUp" SelectionChanged="grid_SelectionChanged"/>
+        <DataGrid x:Name="grid" HorizontalAlignment="Left" Height="377" Margin="10,28,0,0" VerticalAlignment="Center" Width="764" Loaded="grid_Loaded" MouseUp="grid_MouseUp"/>
     </Grid>
 </Window>

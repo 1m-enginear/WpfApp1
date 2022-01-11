@@ -19,7 +19,7 @@ namespace WpfApp1
         //public static string[] findFiles1;
         //public static int lenm; //количество файлов в текущем каталоге
         public static string[] current_object;
-        
+
         //public static int active_schema = ;
         //Переменные для схемы проверки 1
         public string ua;
@@ -80,7 +80,7 @@ namespace WpfApp1
             List<Schema_1> result_1 = new List<Schema_1>(3);
             List<Schema_2> result_2 = new List<Schema_2>(3);
             List<Schema_3> result_3 = new List<Schema_3>(3);
-            XDocument ndoc = XDocument.Load(findFiles[number-1]);
+            XDocument ndoc = XDocument.Load(findFiles[number - 1]);
             {
                 foreach (XElement Param_Check_PKE_Element in ndoc.Element("RM3_ПКЭ").Elements("Param_Check_PKE"))
                 {
@@ -161,39 +161,39 @@ namespace WpfApp1
                             IBAttribute != null && ICCAttribute != null && POAttribute != null && PPAttribute != null && QOAttribute != null && QPAttribute != null && SOAttribute != null && SPAttribute != null &&
                             UOAttribute != null && UPAttribute != null && IOAttribute != null && IPAttribute != null && KOAttribute != null && FreqAttribute != null && sigmaUyAttribute != null && sigmaUyABAttribute != null && sigmaUyBCAAttribute != null && sigmaUyCAAttribute != null)
                         {
-                                uab = UABAttribute.Value;
-                                ubc = UBCAttribute.Value;
-                                uca = UCAAttribute.Value;
-                                iab = IABAttribute.Value;
-                                ibc = IBCAttribute.Value;
-                                ica = ICAAttribute.Value;
-                                ia = double.Parse(IAAttribute.Value);
-                                ib = double.Parse(IBAttribute.Value);
-                                ic = double.Parse(ICCAttribute.Value);
-                                po = double.Parse(POAttribute.Value);
-                                pp = double.Parse(PPAttribute.Value);
-                                qo = double.Parse(QOAttribute.Value);
-                                qp = double.Parse(QPAttribute.Value);
-                                so = double.Parse(SOAttribute.Value);
-                                sp = double.Parse(SPAttribute.Value);
-                                uo = UOAttribute.Value;
-                                up = UPAttribute.Value;
-                                io = double.Parse(IOAttribute.Value);
-                                ip = double.Parse(IPAttribute.Value);
-                                ko = KOAttribute.Value;
-                                freq = FreqAttribute.Value;
-                                sigmaUy = sigmaUyAttribute.Value;
-                                sigmaUyab = sigmaUyABAttribute.Value;
-                                sigmaUybc = sigmaUyBCAAttribute.Value;
-                                sigmaUyca = sigmaUyCAAttribute.Value;
-                                TimeTek = long.Parse(timetekAttribute.Value);
-                                TimeSpan time_start = TimeSpan.FromMilliseconds(TimeTek);
-                                DateTime tstart_t = new DateTime(time_start.Ticks);
-                                tstart_t.Add(time_start);
-                                TimeSpan duration = new TimeSpan(719528, 0, 0, 0);
-                                DateTime answer = tstart_t.Add(duration);
-                                string TimeTek_s = answer.ToString("dd MMMM yyyy hh:mm:ss tt");
-                                result_2.Add(new Schema_2(TimeTek_s, uab, ubc, uca, iab, ibc, ica, ia, ib, ic, po, pp, qo, qp, so, sp, uo, up, io, ip, ko, freq, sigmaUy, sigmaUyab, sigmaUybc, sigmaUyca));
+                            uab = UABAttribute.Value;
+                            ubc = UBCAttribute.Value;
+                            uca = UCAAttribute.Value;
+                            iab = IABAttribute.Value;
+                            ibc = IBCAttribute.Value;
+                            ica = ICAAttribute.Value;
+                            ia = double.Parse(IAAttribute.Value);
+                            ib = double.Parse(IBAttribute.Value);
+                            ic = double.Parse(ICCAttribute.Value);
+                            po = double.Parse(POAttribute.Value);
+                            pp = double.Parse(PPAttribute.Value);
+                            qo = double.Parse(QOAttribute.Value);
+                            qp = double.Parse(QPAttribute.Value);
+                            so = double.Parse(SOAttribute.Value);
+                            sp = double.Parse(SPAttribute.Value);
+                            uo = UOAttribute.Value;
+                            up = UPAttribute.Value;
+                            io = double.Parse(IOAttribute.Value);
+                            ip = double.Parse(IPAttribute.Value);
+                            ko = KOAttribute.Value;
+                            freq = FreqAttribute.Value;
+                            sigmaUy = sigmaUyAttribute.Value;
+                            sigmaUyab = sigmaUyABAttribute.Value;
+                            sigmaUybc = sigmaUyBCAAttribute.Value;
+                            sigmaUyca = sigmaUyCAAttribute.Value;
+                            TimeTek = long.Parse(timetekAttribute.Value);
+                            TimeSpan time_start = TimeSpan.FromMilliseconds(TimeTek);
+                            DateTime tstart_t = new DateTime(time_start.Ticks);
+                            tstart_t.Add(time_start);
+                            TimeSpan duration = new TimeSpan(719528, 0, 0, 0);
+                            DateTime answer = tstart_t.Add(duration);
+                            string TimeTek_s = answer.ToString("dd MMMM yyyy hh:mm:ss tt");
+                            result_2.Add(new Schema_2(TimeTek_s, uab, ubc, uca, iab, ibc, ica, ia, ib, ic, po, pp, qo, qp, so, sp, uo, up, io, ip, ko, freq, sigmaUy, sigmaUyab, sigmaUybc, sigmaUyca));
                         }
                     }
                 }
@@ -285,7 +285,7 @@ namespace WpfApp1
                 Schema_1 path = grid.SelectedItem as Schema_1;
                 try
                 {
-                    MessageBox.Show("U(A) = " + path.Ua + ", " + "I(A) = " + path.Ia + ", " + "P(A) = " + path.Pa + ", " + "Q(A) = " + path.Qa + ", " + "S(A) = " + path.Sa + ", " 
+                    MessageBox.Show("U(A) = " + path.Ua + ", " + "I(A) = " + path.Ia + ", " + "P(A) = " + path.Pa + ", " + "Q(A) = " + path.Qa + ", " + "S(A) = " + path.Sa + ", "
                         + "" + "Sigma(Uy) = " + path.sigmaUy + ". ", NameObject + " - " + path.Дата);
                 }
                 catch
@@ -298,7 +298,7 @@ namespace WpfApp1
                 try
                 {
                     MessageBox.Show("I(A) = " + path.IA + ", " + "I(AB) = " + path.IAB + ", " + "I(B) = " + path.IB + ", " + "I(BC) = " + path.IBC + ", " + "I(C) = " + path.IC + ", "
-                    + "I(CA) = "  + path.ICA + ", " + "I(O) = " + path.IO + ", " + "I(P) = " + path.IP + ", " + "I(KO) = " + path.KO + ", " + "I(PO) = " + path.PO + ", "
+                    + "I(CA) = " + path.ICA + ", " + "I(O) = " + path.IO + ", " + "I(P) = " + path.IP + ", " + "I(KO) = " + path.KO + ", " + "I(PO) = " + path.PO + ", "
                     + "I(PP) = " + path.PP + ", " + "I(QO) = " + path.QO + ", " + "I(QP) = " + path.QP + ", " + "Sigma Uy = " + path.sigmaUy + ", " + "Sigma Uy(AB) = " + path.sigmaUyAB + ", "
                     + "Sigma Uy(BC) = " + path.sigmaUyBC + ", " + "Sigma Uy(CA) = " + path.sigmaUyCA + ", " + "I(SO) = " + path.SO + ". ", NameObject + " - " + path.Дата);
                 }
@@ -312,8 +312,8 @@ namespace WpfApp1
                 try
                 {
                     MessageBox.Show("I(A) = " + path.IA + ", " + "I(B) = " + path.IB + ", " + "I(C) = " + path.IC + ", " + "I(O) = " + path.IO + ", " + "I(P) = " + path.IP + ", "
-                    + "KO = "  + path.KO + ", " + "PO = " + path.PO + ", " + "PP = " + path.PP + ", " + "QO = " + path.QO + ", " + "QP = " + path.QP + ", "
-                    + "Sigma Uy = " + path.sigmaUy + ", " + "Sigma Uy(AB) = " + path.sigmaUyAB + ", " + "Sigma Uy(BC) = " + path.sigmaUyBC + ", " + "Sigma Uy(CA) = " + path.sigmaUyCA + ", " 
+                    + "KO = " + path.KO + ", " + "PO = " + path.PO + ", " + "PP = " + path.PP + ", " + "QO = " + path.QO + ", " + "QP = " + path.QP + ", "
+                    + "Sigma Uy = " + path.sigmaUy + ", " + "Sigma Uy(AB) = " + path.sigmaUyAB + ", " + "Sigma Uy(BC) = " + path.sigmaUyBC + ", " + "Sigma Uy(CA) = " + path.sigmaUyCA + ", "
                     + "SO = " + path.SO + ", " + "SP = " + path.SP + ", " + "U(AB) = " + path.UAB + ", " + "U(BC) = " + path.UBC + ", " + "U(CA) = " + path.UCA + ", "
                     + "U(O) = " + path.UO + ", " + "U(P) = " + path.UP + ", ", NameObject + " - " + path.Дата);
                 }
@@ -357,7 +357,7 @@ namespace WpfApp1
     }
     class Schema_2
     {
-        public Schema_2 (string Дата, string UAB, string UBC, string UCA, string IAB, string IBC, string ICA, double IA,
+        public Schema_2(string Дата, string UAB, string UBC, string UCA, string IAB, string IBC, string ICA, double IA,
                         double IB, double IC, double PO, double PP, double QO, double QP, double SO, double SP,
                         string UO, string UP, double IO, double IP, string KO, string Freq, string sigmaUy, string sigmaUyAB,
                         string sigmaUyBC, string sigmaUyCA)
@@ -453,23 +453,23 @@ namespace WpfApp1
         public string UBC { get; set; }
         public string UCA { get; set; }
         public double IA { get; set; }
-        public double IB{ get; set; }
-        public double IC{ get; set; }
-        public double PO{ get; set; }
+        public double IB { get; set; }
+        public double IC { get; set; }
+        public double PO { get; set; }
         public double PP { get; set; }
         public double QO { get; set; }
         public double QP { get; set; }
         public double SO { get; set; }
         public double SP { get; set; }
-        public string UO     { get; set; }
-        public string UP    { get; set; }
-        public double IO    { get; set; }
-        public double IP    { get; set; }
-        public string KO    { get; set; }
+        public string UO { get; set; }
+        public string UP { get; set; }
+        public double IO { get; set; }
+        public double IP { get; set; }
+        public string KO { get; set; }
         public string Freq { get; set; }
         public string sigmaUy { get; set; }
         public string sigmaUyAB { get; set; }
         public string sigmaUyBC { get; set; }
         public string sigmaUyCA { get; set; }
-}
+    }
 }
